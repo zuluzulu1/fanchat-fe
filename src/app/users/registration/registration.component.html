@@ -1,0 +1,42 @@
+<form #f="ngForm" class="form-horizontal" (ngSubmit)='onSubmit()'>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="first-name">First name</label>
+        <div class="col-sm-6">
+            <input type="text" name="first-name" id="first-name" class="form-control" placeholder="First name" 
+            [(ngModel)]="newUser.firstName" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="last-name">Last name</label>
+        <div class="col-sm-6">
+            <input type="text" name="last-name" id="last-name" class="form-control" placeholder="Last name" [(ngModel)]="newUser.lastName" required/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="email-addr">Email</label>
+        <div class="col-sm-6">
+            <input name="email-addr" type="email" id="email-addr" class="form-control" placeholder="Email" email [(ngModel)]="newUser.email" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="password">Password</label>
+        <div class="col-sm-6">
+            <input name="password" type="password" id="password" class="form-control" placeholder="Password" 
+            [(ngModel)]="newUser.password" minlength="6" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="repeat-password">Repeat Password</label>
+        <div class="col-sm-6">
+            <input name="repeat-password" type="password" id="repeat-password" class="form-control" placeholder="Repeat Password" 
+            minlength="6" [(ngModel)] = "newUser.passwordRepeat" required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Register</button>
+        </div>
+    </div>
+</form>
+

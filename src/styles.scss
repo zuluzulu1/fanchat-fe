@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+
+body{
+    background-image: url('assets/purple.jpg');
+    font-family: 'Poppins', sans-serif;
+}
+.wrapper{
+    background: rgb(238, 228, 228);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    margin: 55px;
+}
+ .container input{
+     border: none;
+     color: #000;
+ }
+
+ img {
+     margin-left: auto;
+     max-width: 80%;
+     padding: 40px 20px 40px 20px;
+     height: auto;
+ }
+
+ .col.right{
+     padding: 40px 20px 40px 20px;
+ }

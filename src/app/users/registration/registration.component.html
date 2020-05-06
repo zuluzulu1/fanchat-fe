@@ -29,7 +29,8 @@
     </div>
 
     <div class="text-right">
-        <button type="submit" class="btn btn-primary text-right" [disabled]="!f.valid">Sign up</button>
+        <button type="submit" class="btn btn-primary text-right" [disabled]="!f.valid"
+        (click)="onRegister()">Sign up</button>
     </div>
 
     </form>

@@ -1,32 +1,34 @@
-<p>chat works!</p>
-
-<div class="container">
+<div class="wrapper">
+    <button class="btn btn-light" type="button" id="button-addon1"
+                       (click)="onSignOut()">SignOut</button>
     <div class="row">
+        
         <div class="col-4">
-            <p>col-1</p>
-            <form>
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit"><i class="fa fa-search">@</i></button>
-            </form> 
+            <input class ="search" type="text" placeholder="Search.." name="search">
             <ul class="list-group">
-                <li class="list-group-item">Person-1</li>
-                <li class="list-group-item">Person-2</li>
-                <li class="list-group-item">Person-3</li>
-                <li class="list-group-item">Person-4</li>
+                <li *ngFor="let group of groups"  
+                (click)="selectedGroupId=group.id"
+                [ngClass]="{active: group.id == selectedGroupId}"
+                class="list-group-item" >{{group.name}}</li>
             </ul>
         </div>
-
         <div class="col-8 right">
-            <p>col-2</p>
-            <div class="scrollBar "></div>
-            <div class="input-group flex-nowrap">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="addon-wrapping">@</span>
+            <div class="person">Person Name</div>
+            <div class="chat">
+                <ul class="list-group">
+                    <li class="massage">Hello</li>
+                    <li class="massage">hoi</li>
+                </ul>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Type massage here..." 
+                    aria-label="Recipient's username" aria-describedby="button-addon2"
+                    [(ngModel)] = "massageText">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                       (click)="onSend()">send</button>
+                    </div>
                 </div>
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" 
-                aria-describedby="addon-wrapping">
             </div>
-
         </div>
     </div>
 </div>

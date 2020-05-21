@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { ChatapiService } from '../services/chatapi.service';
+import { GroupModel } from '../models/group.model';
+import { GroupMessage } from '../models/groupmessages.model';
 
 @Component({
   selector: 'app-chat',
@@ -10,20 +13,18 @@ import { Router } from '@angular/router';
 })
 export class ChatComponent implements OnInit {
 
-  constructor( private http: HttpClient, private auth:AuthService, private router:Router) {}
+  constructor(private router:Router, private chatapi:ChatapiService) {}
 
-  groups = [{name: "friends"}, { name: "fun" }]
+  groups:GroupModel[] = []
   selectedGroupId = ''
   massageText = ''
+  messages: GroupMessage[] = []
 
   ngOnInit() {
-   this.http.get('http://localhost:3001/group', {headers:{ "Authorization":`Bearer ${this.auth.getAuthToken()}`}
-   })
-
-   .toPromise()
+    this.chatapi.getMyGroups()
    .then(data =>{
-     if (data['success'] == true){
-       this.groups = data['data']
+     if (data.success == true){
+       this.groups = data.data
      }
    })
    .catch(reason =>{
@@ -35,12 +36,10 @@ export class ChatComponent implements OnInit {
   }
 
   onSend(){
-     this.http.post(`http://localhost:3001/group/${this.selectedGroupId}/send/text`,
-      {'text': this.massageText},
-      { headers:{ "Authorization":`Bearer ${this.auth.getAuthToken()}`} })
-    .toPromise()
+     this.chatapi.sendGroupMessage(this.selectedGroupId, this.massageText)
     .then(data =>{
-      if( data['success']['success'] == true){
+      //debugger
+      if( data.success == true){
         this.massageText = ''
       }
     })
@@ -55,4 +54,17 @@ export class ChatComponent implements OnInit {
   onSignOut(){
     this.router.navigate(['users/login'])
   }
+
+  onGroupSelect(group: GroupModel){
+    this.selectedGroupId=group.id
+
+    this.chatapi.getGroupMessages(this.selectedGroupId, 0, 100)
+    .then(data =>{
+      if(data.success == true){
+        this.messages = data.data
+      }
+    })
+  }
+  
+
 }

@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+
+body{
+    height: 100%;
+    background-image: url('assets/purple.jpg');
+    font-family: 'Poppins', sans-serif;
+}
+.wrapper{
+    height: 100%;
+    padding: 40px 20px 40px 20px;
+    background: rgb(55, 18, 85);
+    margin: 55px;
+}
+ .container input{
+    position: relative;
+    border: white;
+    width: calc(100% - 90px);
+    padding: 11px 32px 10px 8px;
+    font-size: 0.8em;
+    color: #434651;
+
+ }
+
+ img {
+     margin-left: auto;
+     max-width: 80%;
+     padding: 40px 20px 60px 20px;
+     height: auto;
+ }
+
+ form input{
+     width: 50px;
+
+ }
+
+ .col.right{
+     padding: 40px 20px 40px 20px;
+ }
+
+  div.right{
+     padding: 20px 20px 20px 20px;
+     border: 1px;
+     background-color: white;
+ }
+
+ .chat {
+    width: 490px;
+    float:left;
+    background: #F2F5F8;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    
+    color: #434651;
+    
+    .chat-header {
+      padding: 20px;
+      border-bottom: 2px solid white;
+    }
+}
+.massage-input{
+    float: left;
+    border: white;
+    width: calc(100% - 90px);
+    padding: 11px 32px 10px 8px;
+    font-size: 0.8em;
+    color: #434651;
+}

@@ -7,18 +7,23 @@
             <input class ="search" type="text" placeholder="Search.." name="search">
             <ul class="list-group">
                 <li *ngFor="let group of groups"  
-                (click)="selectedGroupId=group.id"
+                (click)="onGroupSelect(group)"
                 [ngClass]="{active: group.id == selectedGroupId}"
                 class="list-group-item" >{{group.name}}</li>
             </ul>
         </div>
         <div class="col-8 right">
             <div class="person">Person Name</div>
+
             <div class="chat">
-                <ul class="list-group">
-                    <li class="massage">Hello</li>
-                    <li class="massage">hoi</li>
-                </ul>
+                <ul class="list-group messages">
+                    <li *ngFor="let message of messages" class="massage">
+                        <p>{{message.text}}</p>
+                        <span class="time-right">11:00</span>
+                    </li>            
+                </ul> 
+               
+                  
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Type massage here..." 
                     aria-label="Recipient's username" aria-describedby="button-addon2"
